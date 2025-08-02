@@ -18,9 +18,11 @@ export const metadata: Metadata = {
   description: "Get instant AI-powered feedback on your landing page. Improve conversion rates with expert analysis.",
   icons: {
     icon: [
-      { url: '/pagegradefavicon.png', type: 'image/png' },
-      { url: '/favicon.ico' },
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/pagegradefavicon.png', type: 'image/png', sizes: '32x32' },
     ],
+    shortcut: '/favicon.ico',
+    apple: '/pagegradefavicon.png',
   },
 };
 
