@@ -30,7 +30,7 @@ export default function Home() {
       const data = await response.json();
       setFeedback(data);
     } catch (err) {
-      setError(err.message || 'Something went wrong');
+      setError(err instanceof Error ? err.message : 'Something went wrong');
     } finally {
       setLoading(false);
     }
@@ -46,19 +46,11 @@ export default function Home() {
               src="/pagegradelogo.png" 
               alt="PageGrade Logo" 
               className="h-16 w-auto"
-              onError={(e) => {
-                // Fallback to text if image fails to load
-                e.currentTarget.style.display = 'none';
-                const fallback = document.createElement('h1');
-                fallback.className = 'text-5xl font-bold text-gray-900';
-                fallback.textContent = 'PageGrade';
-                e.currentTarget.parentNode?.appendChild(fallback);
-              }}
+              style={{ imageRendering: 'crisp-edges' }}
             />
           </div>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Get instant AI-powered feedback on your landing page. 
-            Paste your URL and receive a detailed analysis with actionable insights.
+            Get instant AI-powered feedback on your landing page. Paste your URL and receive a detailed analysis with actionable insights to improve conversion rate.
           </p>
         </div>
 

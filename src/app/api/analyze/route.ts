@@ -182,7 +182,12 @@ function parseStructuredResponse(response: string) {
   };
 }
 
-async function analyzeWithAI(content: any) {
+async function analyzeWithAI(content: {
+  title: string;
+  headlines: string[];
+  bodyText: string;
+  ctaButtons: string[];
+}) {
   console.log('Starting AI analysis...');
   console.log('API Key available:', !!process.env.OPENAI_API_KEY);
   
@@ -249,9 +254,9 @@ Please analyze this page and respond with:
   } catch (error) {
     console.error('OpenAI API error:', error);
     console.error('Error details:', {
-      message: error.message,
-      name: error.name,
-      stack: error.stack
+      message: error instanceof Error ? error.message : 'Unknown error',
+      name: error instanceof Error ? error.name : 'Unknown',
+      stack: error instanceof Error ? error.stack : 'No stack trace'
     });
     // Return fallback analysis
     return {

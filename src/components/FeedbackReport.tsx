@@ -43,7 +43,7 @@ export function FeedbackReport({ feedback }: FeedbackReportProps) {
       <div className="bg-green-50 border border-green-200 rounded-lg p-6">
         <div className="flex items-center mb-4">
           <span className="text-2xl mr-3">✅</span>
-          <h3 className="text-lg font-semibold text-green-900">What's Good</h3>
+          <h3 className="text-lg font-semibold text-green-900">What&apos;s Good</h3>
         </div>
                  <div className="text-green-800 space-y-3">
            {feedback.strengths.map((strength, index) => (
@@ -56,7 +56,7 @@ export function FeedbackReport({ feedback }: FeedbackReportProps) {
                      <span className="text-green-800">{strength.split(':').slice(1).join(':')}</span>
                    </>
                  ) : (
-                   <span className="text-green-800">{strength}</span>
+                   <span className="text-green-800">{strength.replace(/'/g, '&apos;')}</span>
                  )}
                </div>
              </div>
@@ -81,7 +81,7 @@ export function FeedbackReport({ feedback }: FeedbackReportProps) {
                      <span className="text-orange-800">{improvement.split(':').slice(1).join(':')}</span>
                    </>
                  ) : (
-                   <span className="text-orange-800">{improvement}</span>
+                   <span className="text-orange-800">{improvement.replace(/'/g, '&apos;')}</span>
                  )}
                </div>
              </div>
@@ -106,7 +106,7 @@ export function FeedbackReport({ feedback }: FeedbackReportProps) {
                      <span className="text-blue-800">{suggestion.split(':').slice(1).join(':')}</span>
                    </>
                  ) : (
-                   <span className="text-blue-800">{suggestion}</span>
+                   <span className="text-blue-800">{suggestion.replace(/'/g, '&apos;')}</span>
                  )}
                </div>
              </div>
